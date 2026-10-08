@@ -3,9 +3,9 @@ title: Equibles MCP Server
 slug: equibles-mcp-server
 category: mcp
 description: >-
-  Hosted, read-only MCP server that lets Claude query source-linked US company
-  data: SEC filings, as-reported fundamentals, earnings-call transcripts, 13F
-  holdings, and insider trades.
+  Hosted MCP server that lets Claude query source-linked US company data: SEC
+  filings, as-reported fundamentals, earnings-call transcripts, 13F holdings,
+  and insider trades.
 cardDescription: Connect Claude to SEC filings, fundamentals, transcripts, and 13F data.
 seoTitle: Equibles MCP Server for Claude
 seoDescription: >-
@@ -49,13 +49,13 @@ prerequisites:
   - Claude Code, Claude Desktop, or another client that supports remote Streamable HTTP MCP servers.
   - Awareness of the plan's daily request limit (the free tier allows 100 requests per day).
 safetyNotes:
-  - Remote, read-only server; it runs no local commands and writes nothing to files or external accounts.
+  - Remote server; it runs no local commands and writes no local files. Market-data tools are read-only; portfolio and watchlist tools create, edit, and delete only the signed-in user's own Equibles portfolio data, and the delete tools carry the MCP destructive annotation.
   - Financial data and model summaries are research input, not investment, tax, or legal advice; check figures against the linked source filings.
   - Requests count against the Equibles account quota and can be rate limited.
 privacyNotes:
   - Tool calls send tickers, filing filters, date ranges, and search text to Equibles servers at mcp.equibles.com.
   - OAuth tokens or API keys are held by the MCP client; never commit API keys to shared configuration files.
-  - Queried tickers and searches can reveal research interests, so avoid sending private portfolio or client details in prompts.
+  - Queried tickers and searches can reveal research interests, and portfolio tools store the positions you add in your Equibles account, so avoid sending client details in prompts.
 disclosure: >-
   Hosted service by Equibles with a free tier and paid plans; tools require an
   Equibles account or API key. Submitted by the Equibles maintainer.
@@ -83,7 +83,7 @@ robotsFollow: true
 
 ## Content
 
-Equibles MCP Server is a hosted, read-only remote MCP server at
+Equibles MCP Server is a hosted remote MCP server at
 `https://mcp.equibles.com/mcp` (Streamable HTTP). It connects Claude and other
 MCP clients to US company research data with links back to the source
 documents: SEC filing search and filing text, fundamentals as reported in
@@ -151,8 +151,9 @@ Sign in with Equibles when the client opens the OAuth flow, or send
 Equibles is a research data source. Treat model-generated conclusions as draft
 research and verify figures against the linked filings before using them in
 investment, reporting, or compliance work. Tool calls send tickers, filters,
-and search text to Equibles, so keep private portfolio or client details out of
-prompts, and keep API keys out of shared configuration.
+and search text to Equibles, and portfolio tools store the positions you add in
+your Equibles account, so keep client details out of prompts, and keep API keys
+out of shared configuration.
 
 ## Duplicate Check
 
